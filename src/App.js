@@ -1,12 +1,37 @@
-  import React from 'react'
-  
-  const App = () => {
-   return (
+import React from 'react'
+import { Grid, Paper } from '@material-ui/core'
+
+import { Details } from './components'
+import useAppStyles from './styles'
+
+const App = () => {
+  const classes = useAppStyles()
+  return (
     <div>
-     Hello
+      <Grid
+        className={classes.grid}
+        container
+        spacing={2}
+        alignItems='center'
+        justify='center'
+        style={{ height: '100vh' }}
+      >
+        <Grid item xs={12} sm={4}>
+          <Paper>
+            <Details />
+          </Paper>
+        </Grid>
+        <Grid item xs={12} sm={4}>
+          Main
+        </Grid>
+        <Grid item xs={12} sm={4}>
+          <Paper>
+            <Details />
+          </Paper>
+        </Grid>
+      </Grid>
     </div>
-   )
-  }
-  
-  export default App
-  
+  )
+}
+
+export default App
