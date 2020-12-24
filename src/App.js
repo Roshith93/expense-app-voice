@@ -1,7 +1,7 @@
 import React from 'react'
 import { Grid, Paper } from '@material-ui/core'
 
-import { Details } from './components'
+import { Details, Main } from './components'
 import useAppStyles from './styles'
 
 const App = () => {
@@ -22,7 +22,7 @@ const App = () => {
           </Paper>
         </Grid>
         <Grid item xs={12} sm={4}>
-          Main
+          <Main />
         </Grid>
         <Grid item xs={12} sm={4}>
           <Paper>
