@@ -11,7 +11,7 @@ const App = () => {
       <Grid
         className={classes.grid}
         container
-        spacing={2}
+        spacing={0}
         alignItems='center'
         justify='center'
         style={{ height: '100vh' }}

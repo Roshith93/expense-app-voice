@@ -10,6 +10,8 @@ import {
 
 import useMainStyles from './styles'
 import { Form } from '../Form/Form'
+import { List } from '../List/List'
+
 export const Main = () => {
   const classes = useMainStyles()
   return (
@@ -28,7 +30,7 @@ export const Main = () => {
       <CardContent className={classes.cartContent}>
         <Grid container spacing={2}>
           <Grid item xs={12}>
-            Datap
+            <List />
           </Grid>
         </Grid>
       </CardContent>
