@@ -9,7 +9,7 @@ import {
 } from '@material-ui/core'
 
 import useMainStyles from './styles'
-
+import { Form } from '../Form/Form'
 export const Main = () => {
   const classes = useMainStyles()
   return (
@@ -23,7 +23,7 @@ export const Main = () => {
           Text from the speechly
         </Typography>
         <Divider />
-        {/* add form */}
+        <Form />
       </CardContent>
       <CardContent className={classes.cartContent}>
         <Grid container spacing={2}>
