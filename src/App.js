@@ -18,7 +18,7 @@ const App = () => {
       >
         <Grid item xs={12} sm={4}>
           <Paper>
-            <Details />
+            <Details title="income"/>
           </Paper>
         </Grid>
         <Grid item xs={12} sm={4}>
@@ -26,7 +26,7 @@ const App = () => {
         </Grid>
         <Grid item xs={12} sm={4}>
           <Paper>
-            <Details />
+            <Details  title="expense"/>
           </Paper>
         </Grid>
       </Grid>

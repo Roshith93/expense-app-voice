@@ -4,11 +4,11 @@ import { Doughnut } from 'react-chartjs-2'
 
 import useDetailsStyle from './styles'
 
-export const Details = () => {
- const classes = useDetailsStyle()
+export const Details = ({ title }) => {
+  const classes = useDetailsStyle()
   return (
-    <Card className={classes.income}>
-      <CardHeader title='income' />
+    <Card className={title === 'income' ? classes.income : classes.expense}>
+      <CardHeader title={title} />
       <CardContent>
         <Typography component='h3'>Income</Typography>
       </CardContent>
