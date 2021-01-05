@@ -1,4 +1,4 @@
-import React from 'react'
+import React ,{useContext} from 'react'
 import {
   List as MUIList,
   ListItem,
@@ -12,9 +12,13 @@ import {
 import { Delete, MoneyOff } from '@material-ui/icons'
 
 import useListStyles from './styles'
+import {ExpenseTrackerContext} from '../../context'
+
 
 export const List = () => {
-  const classes = useListStyles()
+ const classes = useListStyles()
+ const consumer = useContext(ExpenseTrackerContext)
+ console.log(consumer)
   const transactions = [
     {
       id: 1,
