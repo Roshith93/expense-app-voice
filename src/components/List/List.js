@@ -50,7 +50,7 @@ export const List = () => {
               />
               <ListItemSecondaryAction>
                 {' '}
-                <IconButton edge='end' aria-label='delete' onClick={ () => deleteItem(transaction.id)}>
+                <IconButton edge='end' aria-label='delete' onClick={ () =>  deleteItem(transaction.id)}>
                   <Delete />
                 </IconButton>
               </ListItemSecondaryAction>

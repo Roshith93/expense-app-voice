@@ -23,9 +23,7 @@ const initialState = {
 export const Form = () => {
   const classes = useFormStyles()
   const [formData, setFormData] = useState(initialState)
-  const { addTransactions, deleteTransactions } = useContext(
-    ExpenseTrackerContext
-  )
+  const { addTransactions } = useContext(ExpenseTrackerContext)
   const createTransation = () => {
     let transaction = {
       ...formData,
