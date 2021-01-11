@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {
   Grid,
   Card,
@@ -11,15 +11,17 @@ import {
 import useMainStyles from './styles'
 import { Form } from '../Form/Form'
 import { List } from '../List/List'
+import { ExpenseTrackerContext } from '../../context'
 
 export const Main = () => {
   const classes = useMainStyles()
+  const { totalBalance } = useContext(ExpenseTrackerContext)
   return (
     <Card className={classes.root}>
       <CardHeader title='Expense tracker' subheader='Powered by Speechly' />
       <CardContent>
         <Typography variant='h5' align='center'>
-          Total Balance
+          {totalBalance}
         </Typography>
         <Typography style={{ lineHeight: '1.5em', marginTop: '20px' }}>
           Text from the speechly
