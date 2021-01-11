@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useReducer, createContext } from 'react'
+import React, { useReducer, createContext } from 'react'
 
 import { rootReducer } from './reducer'
 import { ADD_TRANSACTIONS, DELETE_TRANSACTIONS } from './types'
 
-const initialState = []
+const initialState = JSON.parse(localStorage.getItem('transactions')) || []
 export const ExpenseTrackerContext = createContext(initialState)
 
 export const Provider = ({ children }) => {
@@ -23,7 +23,7 @@ export const Provider = ({ children }) => {
 
   return (
     <ExpenseTrackerContext.Provider
-      value={{transactions, addTransactions, deleteTransactions }}
+      value={{ transactions, addTransactions, deleteTransactions }}
     >
       {children}
     </ExpenseTrackerContext.Provider>
