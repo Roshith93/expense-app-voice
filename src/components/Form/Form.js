@@ -10,6 +10,7 @@ import {
   MenuItem,
 } from '@material-ui/core'
 import { v4 as uuidv4 } from 'uuid'
+import { useSpeechContext } from '@speechly/react-client'
 
 import useFormStyles from './styles/index'
 import { ExpenseTrackerContext } from '../../context'
@@ -26,6 +27,7 @@ export const Form = () => {
   const classes = useFormStyles()
   const [formData, setFormData] = useState(initialState)
   const { addTransactions } = useContext(ExpenseTrackerContext)
+  const { segment } = useSpeechContext()
   const selectedCategories =
     formData.type === 'Income' ? incomeCategories : expenseCategories
 
@@ -42,7 +44,7 @@ export const Form = () => {
     <Grid container spacing={2}>
       <Grid item xs={12}>
         <Typography align='center' variant='subtitle2' gutterBottom>
-          Hello
+          {segment && segment.words.map((w) => w.value).join(" ")}
         </Typography>
       </Grid>
       <Grid item xs={6}>
@@ -89,7 +91,9 @@ export const Form = () => {
           label='Date'
           fullWidth
           value={formData.date}
-          onChange={(e) => setFormData({ ...formData, date: formatDate(e.target.value) })}
+          onChange={(e) =>
+            setFormData({ ...formData, date: formatDate(e.target.value) })
+          }
         />
       </Grid>
       <Button

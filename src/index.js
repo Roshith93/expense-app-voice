@@ -8,7 +8,7 @@ import { Provider } from './context'
 
 ReactDOM.render(
   <SpeechProvider
-    sppid='06d3edbb-dfe3-4e3e-bc53-3cffad634696'
+    appId='06d3edbb-dfe3-4e3e-bc53-3cffad634696'
     language='en-US'
   >
     <Provider>
