@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import {
   TextField,
   Typography,
@@ -40,11 +40,62 @@ export const Form = () => {
     addTransactions(transaction)
     setFormData(initialState)
   }
+
+  useEffect(() => {
+    if (segment) {
+      console.log(segment)
+      if (segment.intent.intent === 'add_expense') {
+        setFormData({ ...formData, type: 'Expense' })
+      } else if (segment.intent.intent === 'add_income') {
+        setFormData({ ...formData, type: 'Income' })
+      } else if (
+        segment.final &&
+        segment.intent.intent === 'create_transaction'
+      ) {
+        return createTransation()
+      } else if (
+        segment.final &&
+        segment.intent.intent === 'cancel_transation'
+      ) {
+        return setFormData(initialState)
+      }
+
+      segment.entities.forEach((e) => {
+        const category = `${e.value.charAt(0)}${e.value.slice(1).toLowerCase()}`
+        switch (e.type) {
+          case 'amount':
+            return setFormData({ ...formData, amount: e.value })
+          case 'category':
+            if (incomeCategories.map((iC) => iC.type).includes(category)) {
+              setFormData({ ...formData, type: 'Income', category })
+            } else if (
+              expenseCategories.map((eC) => eC.type).includes(category)
+            ) {
+              setFormData({ ...formData, type: 'Expense', category })
+            }
+            break
+          case 'date':
+            return setFormData({ ...formData, date: e.value })
+          default:
+            break
+        }
+      })
+      if (
+        segment.isFinal &&
+        formData.amount &&
+        formData.type &&
+        formData.date &&
+        formData.category
+      ) {
+        createTransation()
+      }
+    }
+  }, [segment])
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
         <Typography align='center' variant='subtitle2' gutterBottom>
-          {segment && segment.words.map((w) => w.value).join(" ")}
+          {segment && segment.words.map((w) => w.value).join(' ')}
         </Typography>
       </Grid>
       <Grid item xs={6}>
